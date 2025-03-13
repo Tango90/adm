@@ -164,3 +164,5 @@ Now, I'll implement the Python script for route optimization and API deployment.
             app.run(debug=True)
         
 
+![image](https://github.com/user-attachments/assets/77274375-b6cb-4f3a-a807-d1a613ed80a7)
+
