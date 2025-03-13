@@ -62,47 +62,47 @@ Next Steps
 
 1.	Optimization Approach:
    
-    o	Assign orders to trucks based on weight capacity.
-    
-    o	Group orders by location to minimize route costs.
-    
-    o	Plan truck routes to visit multiple locations efficiently.
-    
-    o	Consider driver working limits (14-hour shifts, 10-hour breaks).
-    
-    o	Minimize fuel and labour costs.
+     o	Assign orders to trucks based on weight capacity.
+     
+     o	Group orders by location to minimize route costs.
+     
+     o	Plan truck routes to visit multiple locations efficiently.
+     
+     o	Consider driver working limits (14-hour shifts, 10-hour breaks).
+     
+     o	Minimize fuel and labour costs.
 
 
 2.	Python Implementation:
 
    
-    o	API to accept orders and return optimized delivery plans.
-    
-    o	Route optimization using Google OR-Tools or Graph Algorithms.
-    
-    o	Cost estimation based on fuel and driver wages.
+     o	API to accept orders and return optimized delivery plans.
+     
+     o	Route optimization using Google OR-Tools or Graph Algorithms.
+     
+     o	Cost estimation based on fuel and driver wages.
 
 
 3.	Deployment on Azure:
 
    
-    o	API deployed using Azure App Service.
-    
-    o	Azure Functions for automated scheduling.
-    
-    o	Azure Cosmos DB for storing order and route data.
-    
-    o	Azure Machine Learning for cost predictions (optional).
-    
-    o	Docker for containerized deployment.
+     o	API deployed using Azure App Service.
+     
+     o	Azure Functions for automated scheduling.
+     
+     o	Azure Cosmos DB for storing order and route data.
+     
+     o	Azure Machine Learning for cost predictions (optional).
+     
+     o	Docker for containerized deployment.
 
 
 4.	Infrastructure Configuration:
 
      
-    o	YAML file for Azure services.
-    
-    o	Dockerfile for containerized API deployment.
+     o	YAML file for Azure services.
+     
+     o	Dockerfile for containerized API deployment.
 
 
 Assumptions
