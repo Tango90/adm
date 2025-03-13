@@ -1,10 +1,10 @@
 To solve this problem, we need to optimize the delivery of orders from the warehouse in Cincinnati, OH, using the available trucks and drivers. The goal is to minimize the overall cost, which includes factors like driver salaries, fuel consumption, and truck capacity utilization.
 
 
-Understanding the Data
+**Understanding the Data**
 
 
-1.	item_info.csv:
+**1.	item_info.csv:**
  
 Contains details about items, including:
 
@@ -15,7 +15,7 @@ Contains details about items, including:
     o	warehouse origin: All items originate from Cincinnati, OH.
 
 
-2.	orders.csv:
+**2.	orders.csv:**
 
 
 Contains details about orders, including:
@@ -31,7 +31,7 @@ Contains details about orders, including:
     o	There are two unnamed columns that appear to be empty.
 
 
-3.	trucks.xlsx (Sheet1):
+**3.	trucks.xlsx (Sheet1):**
 
 
 Contains details about available trucks and drivers:
@@ -57,10 +57,10 @@ Contains details about available trucks and drivers:
     o	Truck Age (years): The age of the truck.
 
 
-Next Steps
+**Next Steps**
 
 
-1.	Optimization Approach:
+**1.	Optimization Approach:**
    
      o	Assign orders to trucks based on weight capacity.
      
@@ -73,7 +73,7 @@ Next Steps
      o	Minimize fuel and labour costs.
 
 
-2.	Python Implementation:
+**2.	Python Implementation:**
 
    
      o	API to accept orders and return optimized delivery plans.
@@ -83,7 +83,7 @@ Next Steps
      o	Cost estimation based on fuel and driver wages.
 
 
-3.	Deployment on Azure:
+**3.	Deployment on Azure:**
 
    
      o	API deployed using Azure App Service.
@@ -97,7 +97,7 @@ Next Steps
      o	Docker for containerized deployment.
 
 
-4.	Infrastructure Configuration:
+**4.	Infrastructure Configuration:**
 
      
      o	YAML file for Azure services.
@@ -105,7 +105,7 @@ Next Steps
      o	Dockerfile for containerized API deployment.
 
 
-Assumptions
+**Assumptions**
 
   
     •	All trucks start and end their journey at the Cincinnati warehouse.
@@ -117,7 +117,7 @@ Assumptions
     •	The road network and distances between cities are known and can be used for route planning.
 
 
-Now, I'll implement the Python script for route optimization and API deployment.
+**Now, I'll implement the Python script for route optimization and API deployment.**
 
         from flask import Flask, request, jsonify
         import pandas as pd
@@ -166,3 +166,6 @@ Now, I'll implement the Python script for route optimization and API deployment.
 
 ![image](https://github.com/user-attachments/assets/77274375-b6cb-4f3a-a807-d1a613ed80a7)
 
+
+
+**API Response**
