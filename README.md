@@ -176,7 +176,7 @@ Contains details about available trucks and drivers:
 
 
 
-========================================================================================================================================================================
+================================================================================
 
 
 Building the above scenario in an Azure environment involves leveraging various Azure services to create a scalable, efficient, and cost-effective solution. Below is a step-by-step guide to implementing the delivery optimization scenario using Azure services:
