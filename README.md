@@ -169,3 +169,8 @@ Contains details about available trucks and drivers:
 
 
 **API Response**
+
+
+![image](https://github.com/user-attachments/assets/be0f6266-02d0-45ca-b064-6bf460e506c7)
+
+
