@@ -1,0 +1,4 @@
+networkx
+flask
+pandas
+openpyxl

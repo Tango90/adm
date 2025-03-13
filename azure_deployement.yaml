@@ -1,0 +1,31 @@
+# Azure Infrastructure Deployment
+
+resources:
+  - type: Microsoft.Web/sites
+    apiVersion: 2021-02-01
+    name: delivery-optimization-api
+    location: eastus
+    properties:
+      serverFarmId: /subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Web/serverfarms/{app-service-plan}
+      siteConfig:
+        linuxFxVersion: "DOCKER|your-docker-image"
+  
+  - type: Microsoft.CosmosDB/databaseAccounts
+    apiVersion: 2021-06-15
+    name: delivery-optimization-db
+    location: eastus
+    kind: GlobalDocumentDB
+    properties:
+      databaseAccountOfferType: Standard
+
+  - type: Microsoft.ContainerService/managedClusters
+    apiVersion: 2021-07-01
+    name: delivery-optimization-aks
+    location: eastus
+    properties:
+      dnsPrefix: delivery-opt-cluster
+      agentPoolProfiles:
+        - name: nodepool1
+          count: 3
+          vmSize: Standard_DS2_v2
+      enableRBAC: true
