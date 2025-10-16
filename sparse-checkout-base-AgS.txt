@@ -1,0 +1,10 @@
+/*
+!/DellPkgs/DellPlatformPkgs/Binaries/*Lake*/
+!/DellPkgs/DellPlatformPkgs/Binaries/*Falls*/
+!/DellPkgs/DellPlatformPkgs/Binaries/*Stream*/
+!/DellPkgs/DellPlatformPkgs/??/*Pkg/
+!/DellSiPkgs/X86/Amd/AGESA_*/
+!/DellSiPkgs/X86/Intel/*Lake*/
+!/DellSiPkgs/X86/Intel/*Falls*/
+!/DellSiPkgs/X86/Intel/*Stream*/
+!/Qc/

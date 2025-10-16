@@ -1,0 +1,55 @@
+---
+#This defines the name of your image and service, in case of a successful build the small image we create at the end of build will be saved here with appropriate version.
+serviceName: "ags2024-base"
+#The location where the image described above should be saved
+artifactRepoPath: ""
+#If you wish to have Dockerfile in a different location that can be specified here.
+dockerFolderLocation: ""
+#The slack channel where you wish to receive the build status and reports in slack
+slackChannel: ""
+#Sonarqube runs in parallel with the build so we need to specify what command to run in order to run sonarqube paralally.
+sonarCommand: ""
+#The base image we use to perform our build the image name matches with the one we have in dockerfile.
+dockerBuildImage: https://artifactory.credant.com/ui/repos/tree/General/docker-local/firmware/bios/dellcore/ags2024-base/0.0.1
+#Version information.
+version:
+  major: 99
+  minor: 99
+  patch: 99
+  #This sets the initial build number so that we can increment and take over from the bamboo build numbers.
+  startBuildNumber: 0
+language:
+  #What language is being built.
+  languageName: "c++"
+  #What is the location of you projects TestResults folder. This should be the same path as we defined in the Dockerfile.
+  testResultsDirectory: ""
+  #TestResults file name.
+  testResultFile: ""
+  #What is the location of you projects Clover codecoverage folder. This should be the same path as we defined in the Dockerfile.
+  codeCoverageDirectory: ""
+  #Clover xml file name.
+  codeCoverageFile: ""
+  #What is the location of you projects bin folder. This should be the same path as we defined in the Dockerfile.
+  buildArtifactDirectory: ""
+  #Files that should be uploaded to the destination.
+  artifactInclusion: ""
+  #Files that should not be uploaded to the destination.
+  artifactExclusion: ""
+  artifactoryDestination: ""
+  #What type of codecoverage report is going to be.
+  codeCoverageType: ""
+
+#Firmware Settings
+biosConfiguration:
+  pmTargetVar: "Platform"
+  pmTrunkVer: "Trunk"
+  pmBranchVar: "Branch"
+  mavenDefaultProfile: ""
+  mavenEmulationProfile: ""
+  mavenSimulationProfile: ""
+bdConfiguration:
+  image: "artifactory.credant.com/docker/firmware/bios/docker-bdscan-image:1.0.0"
+  container: "bdscan"
+  project: "cpg.firmware.ec.gen14"
+  scanType: "signature"
+  optionalArgs: '--additional-args=--detect.blackduck.signature.scanner.arguments="--min-scan-interval=0"'

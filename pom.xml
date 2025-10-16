@@ -1,0 +1,58 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.dell.cpg.firmware.bios</groupId>
+  <artifactId>plat2025</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss'Z'</maven.build.timestamp.format>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <app.env>default</app.env>             <!-- default, debug, release, production-->
+  </properties>
+
+  <!-- Project Information (global) -->
+  <name>Dellcore</name>
+  <description>Dell Core BIOS</description>
+  <url></url>
+  <inceptionYear>2025</inceptionYear>
+  <organization>
+    <name>Dell CPG</name>
+    <url></url>
+  </organization>
+  <issueManagement>
+    <system>Jira</system>
+    <url>https://jira.cpg.dell.com/projects/CDC</url>
+  </issueManagement>
+  <licenses>
+    <license>
+      <name></name>
+      <url></url>
+      <distribution></distribution>
+      <comments></comments>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:https://miller.amer.dell.com/scm/cdc/ags_2025.git</connection>
+    <developerConnection>scm:git:https://miller.amer.dell.com/scm/cdc/ags_2025.git</developerConnection>
+    <tag>ags_2023</tag>
+    <url>https://miller.amer.dell.com/scm/cdc/ags_2025.git</url>
+  </scm>
+
+  <!-- Environment Settings (global) -->
+  <ciManagement></ciManagement>
+  <mailingLists></mailingLists>
+  <repositories></repositories>
+  <pluginRepositories></pluginRepositories>
+  <distributionManagement></distributionManagement>
+
+<!-- Modules -->
+  <modules>
+    <module>DellPkgs</module>
+  </modules>
+
+</project>

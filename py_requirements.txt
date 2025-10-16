@@ -1,0 +1,16 @@
+###### Core Libraries ######
+configparser2
+cryptography
+docopt
+fs
+GitPython
+jsonschema
+pyfatfs
+pyrsistent
+python-dateutil
+PyYAML
+envyaml
+setuptools
+virtualenv
+wget
+pathlib_artifactory

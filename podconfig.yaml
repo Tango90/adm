@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dellcore-prod
+spec:
+  nodeSelector:
+    beta.kubernetes.io/os: windows
+  containers:
+    - name: main
+      image: artifactory.credant.com/docker-local/firmware/bios/dellcore/ags2024-base:0.0.1
+      limits:
+        memory: "8Gi"
+        cpu: "4"
+      requests:
+        memory: "2Gi"
+        cpu: "1500m"
+      command:
+        - powershell
+        - Start-Sleep
+        - "-s 6000"
+  imagePullSecrets:
+    - name: artifactoryCreds
+  restartPolicy: Never

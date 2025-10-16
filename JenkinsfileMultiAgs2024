@@ -1,0 +1,120 @@
+import java.util.UUID;
+import org.jenkinsci.plugins.pipeline.modeldefinition.Utils
+import net.delltools.ci.kpi.model.Kpi;
+
+def loadLibraries() {
+    library 'jenkins-commons-lib@6.58.0'
+    String[] libraries = [
+            'jenkins-scm-lib@1.19.0',
+            'jenkins-console-lib@stable',
+    ]
+
+    loadLibrariesInParallel(libraries)
+}
+
+// List of gen_15 platforms
+jobtargets = [
+    [name: 'AgS_2024_BastionArlS', platform: 'BastionArlSPkg'],
+    [name: 'AgS_2024_CitadelArlS', platform: 'CitadelArlSPkg'],
+    [name: 'AgS_2024_TracerArlS', platform: 'TracerArlSPkg'],
+    [name: 'AgS_2024_TributoLnl', platform: 'TributoLnlPkg'],
+]
+
+jobtargets-ci = [
+    [name: 'g15_Arches13_15_MLK_MTL', platform: 'Arches13_15_MLK_MTL'],
+]
+
+jobtargets-npi = [
+    [name: 'g15_Arches13_15_MLK_MTL', platform: 'Arches13_15_MLK_MTL'],
+]
+
+pipeline {
+    agent {
+        kubernetes {
+            cloud "on-prem-dell-tools"
+            inheritFrom "ci-jenkins-agent"
+            label "jenkins-${UUID.randomUUID().toString()}"
+            yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multibranch-ags2024
+spec:
+  nodeSelector:
+  containers:
+    - name: main
+      image: alpine:3.18.3
+      tty: true
+      command: [ '/bin/sh' ]
+  imagePullSecrets: ['credant-artifactory-docker-registry', 'dockerhub-docker-registry']
+  restartPolicy: Never
+"""
+        }
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                container('jnlp') {
+                    script {
+                        loadLibraries()
+                    }
+                    checkout scm
+                }
+            }
+        }
+        stage('Compile') {
+            steps {
+                lock(resource: 'MultibranchLock') {
+                    container('jnlp') {
+                        script {
+                            def batchSize = 20 // Maximum number of builds to run in parallel
+                            def jobList = jobtargets.collect{it.name} // Extract name from jobList
+                            println jobList
+
+                            def failedJobs = [] // Collection to store the failed jobs
+                            def branchName = scm.branches[0].name
+
+                            while (jobList) {
+                                def parallelParams = [:]  // Define a map to store the parallel steps
+
+                                // firmware.bios.ags2024/ is the current path for all the gen15 jobs
+                                jobList.take(batchSize).each { job ->
+                                    parallelParams[job] = {
+                                        try {
+                                            build job: "firmware.bios.ags2024/${job}", parameters: [string(name: 'TRUNK', value: branchName)]
+                                        } catch (Exception e) {
+                                            // Handle the failure of the job
+                                            failedJobs << job
+                                            println "Job '${job}' failed: ${e.message}"
+                                        }
+                                    }
+                                }
+
+                                parallel parallelParams
+
+                                jobList -= parallelParams.keySet()
+                                println jobList
+                            }
+
+                            // Handle the failed jobs
+                            if (failedJobs) {
+                                println "Failed jobs: ${failedJobs}"
+                                // Rerun the failed jobs in parallel
+                                def rerunParams = [:]
+
+                                failedJobs.each { job ->
+                                    rerunParams[job] = {
+                                        // Trigger the failed job again
+                                        build job: "firmware.bios.ags2024/${job}", parameters: [string(name: 'TRUNK', value: branchName)]
+                                    }
+                                }
+                                parallel rerunParams
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

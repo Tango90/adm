@@ -1,0 +1,184 @@
+# @copyright
+# Copyright (c) 2023 - 2025 Dell Inc. All rights reserved.<BR>
+# This software and associated documentation (if any) is furnished
+# under a license and may only be used or copied in accordance
+# with the terms of the license. Except as permitted by such
+# license, no part of this software or documentation may be
+# reproduced, stored in a retrieval system, or transmitted in any
+# form or by any means without the express written consent of
+# Dell Inc.
+
+# Root Directories
+# ACTUAL_WORKSPACE: &ACTUAL_WORKSPACE !env ${ACTUAL_WORKSPACE}
+# WS: &WS !env ${ACTUAL_WORKSPACE}
+# WS_BUILD_DIR: &WS_BUILD_DIR !join [*ACTUAL_WORKSPACE, /Build]
+# DELL_TOOLS_DIR: &DELL_TOOLS_DIR !join [*ACTUAL_WORKSPACE, /DellPkgs/BuildTools/DellTools]
+# WORKSPACE_DELL_SI_PKG: &WORKSPACE_DELL_SI_PKG !join [*ACTUAL_WORKSPACE, /DellSiPkgs]
+
+DELL_GEN: "AgS_2025"
+PLATFORM_GEN: "AgS2025"
+
+#
+# Dell definitions for Silicon
+# Any additions/changes to this file must be made to all 3 sections, a, b & c below.
+#
+DELL_SI_DEFS: {
+  "TIGERLAKE": "0x00000001",
+  "ROCKETLAKE": "0x00000002",
+  "EAGLESTREAM": "0x00000004",
+  "FISHHAWKFALLS": "0x00000008",
+  "JASPERLAKE": "0x00000010",
+  "ALDERLAKE": "0x00000020",
+  "RAPTORLAKE": "0x00000040",
+  "ALDERLAKEN": "0x00000080",
+  "METEORLAKE": "0x00000100",
+  "ARROWLAKE": "0x00000200",
+  "LUNARLAKE": "0x00000400",
+  "PANTHERLAKE": "0x00000800",
+  "AMD_GENERIC": "0x00000000",
+}
+
+SI_PKGS: [
+  "LunarLake",
+  "PantherLake",
+  "TwinLake",
+  "NovaLake",
+  "AGESA_ComboAM5",
+  "AGESA_GorgonFP8",
+  "AGESA_StrixKrackan"
+]
+
+#
+# Compiler Information
+#
+COMPILERS: [
+  {"name": "VS2019", "ver": "visual-studio/vs2019_win_v01", "out": "vs2019_v01"},
+  {"name": "clang", "ver": "clang/clang_20_1_5", "out": "clang_20_1_5"},
+  {"name": "Python", "ver": "Python/Python312_v1", "out": "Python312_v1"},
+  {"name": "Perl", "ver": "Perl/Perl_win_v01", "out": "Perl_v01"}
+]
+
+DEV_TOOL_LIST: [
+  {"name": "Composer", "ver": "2.1.0", "out": "Composer"},
+  {"name": "Dfu", "ver": "4.2.72", "out": "Dfu"}
+]
+
+OPENSSL_BINARY_LIST: [
+  {"name": "OpensslLib", "ver": "release/1.1.1y", "out": "OpensslLib/1.1.1y"},
+  {"name": "OpensslLib", "ver": "release/3.0.9", "out": "OpensslLib/3.0.9"},
+  {"name": "OpensslLib", "ver": "release/3.4.0", "out": "OpensslLib/3.4.0"},
+]
+
+DPF_BINARIES_LIST: [
+  {"name": "DellBiosConnectPkg", "ver": "release/DPF_2.50.10", "out": "DellBiosConnectPkg"},
+  {"name": "DellManageabilityPkg", "ver": "release/dpf2.10.0", "out": "DellManageabilityPkg"},
+  {"name": "DellPrivateSecurityPkg", "ver": "release/dpf2.13.0", "out": "DellPrivateSecurityPkg"},
+  {"name": "DellSecurityPkg", "ver": "release/dpf2.23.0", "out": "DellSecurityPkg"},
+  {"name": "DellUserInterfacePkg", "ver": "release/dpf2.109.0", "out": "DellUserInterfacePkg"},
+]
+
+BASE_TOOLS_PATH_LIST: [
+  "Bin/Win32",
+  "BinWrappers/WindowsLike",
+]
+
+DEFAULT_COMPILER_PATHS: {
+  VS2019: {
+    COMPILER_PATHS: [
+      "VC/bin/HostX64/x64",
+    ],
+    LIB_PATHS: [
+      "Lib/x64",
+      "Lib/ucrt/x64",
+      "Lib/um/x64",
+    ],
+    PREFIX_PATH: "VC"
+  }
+}
+
+SC_PATTERNS: {
+  "AgS": [
+    "/*",
+    "!/DellPkgs/DellPlatformPkgs/Binaries/*Lake*/",
+    "!/DellPkgs/DellPlatformPkgs/Binaries/*Falls*/",
+    "!/DellPkgs/DellPlatformPkgs/Binaries/*Stream*/",
+    "!/DellPkgs/DellPlatformPkgs/??/*Pkg/",
+    "!/DellSiPkgs/X86/Amd/AGESA_*/",
+    "!/DellSiPkgs/X86/Intel/*Lake*/",
+    "!/DellSiPkgs/X86/Intel/*Falls*/",
+    "!/DellSiPkgs/X86/Intel/*Stream*/",
+  ],
+  "RefCode": [
+    "/*",
+    "!/*/"
+  ]
+}
+
+DFU: {
+  "PolicyBin": "Policy.bin",
+  "ResourceBin": "Resource.bin",
+  "UiBin": "UI.bin",
+  "ParserTool": "DfuParser.exe",
+  "PayloadDsc": "DfuPayload.dsc"
+}
+
+COMPOSER: "composer.exe"
+ISH_SIGN_TOOL_PATH: "openssl.exe"
+FLASH_PKG_MAXSIZE: 0x10000
+
+#
+# Coverity Information
+#
+COVERITY: {
+  "COV_DIR": \\ephraim.amer.dell.com/tools/coverity-analysis/cov-analysis-win64-2022.06/bin/,
+  "COV_SERVER": https://wildbear.amer.dell.com:8443,
+  "COVERITY_SUPPRESS_ASSERT": "1303,1487,1495,1537",
+  "COV_CHECKER_OPTIONS": "--checker-option DEADCODE:no_dead_default:True"
+}
+
+#
+# Default Platform Binaries
+#
+# DEFAULT_BINS: [
+#     {
+#       "NAME": Openssl,
+#       "VER": "3.0.9",
+#       "DL_DIR": !join [*PLATFORM_BINS_DIR, /Openssl]
+#     }
+#   ]
+
+SUPPORTED_NICS: {
+  "INTEL": {
+    "INTEL_8265": 0x0,
+    "INTEL_9260": 0x0,
+    "INTEL_9462": 0x0,
+    "INTEL_9560": 0x0,
+    "INTEL_AX200": 0x0,
+    "INTEL_AX201": 0x0,
+    "INTEL_AX411": 0x0,
+    "INTEL_BE200": 0x0,
+    "INTEL_BE202": 0x0,
+    "INTEL_BE1750": 0x0,
+    "INTEL_BE201": 0x0,
+    "INTEL_AX211_KILLER_1675I_KILLER_1675S": 0x0,
+    "INTEL_AX210_KILLER_1675X_KILLER_1675W": 0x0,
+  },
+  "ATHEROS": {
+    "ATHEROS_9377": 0x0,
+    "ATHEROS_9565": 0x0,
+    "ATHEROS_WCN6856": 0x0,
+    "ATHEROS_WCN7851": 0x0,
+    "ATHEROS_6174_1435_1535": 0x0,
+    "ATHEROS_QCA6390_AX500S": 0x0,
+  },
+  "REALTEK": {
+    "REALTEK_8822CE": 0x0,
+    "REALTEK_8852BE": 0x0,
+    "REALTEK_8852CE": 0x0,
+    "REALTEK_8851BE": 0x0,
+  },
+  "MEDIATEK": {
+    "MEDIATEK_7921": 0x0,
+    "MEDIATEK_7922": 0x0,
+  }
+}

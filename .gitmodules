@@ -1,0 +1,44 @@
+[submodule "DellFeatures/DellFeaturesPkg"]
+    path = DellFeatures/DellFeaturesPkg
+    url = ../../cbf/DellFeaturesPkg.git
+    branch = master
+[submodule "DellFeatures/DellFeaturesBinPkgs/DellBiosConnectPkg"]
+    path = DellFeatures/DellFeaturesBinPkgs/DellBiosConnectPkg
+    url = ../../cbf/DellBiosConnectPkg.git
+    branch = master
+[submodule "DellFeatures/DellFeaturesBinPkgs/DellManageabilityPkg"]
+    path = DellFeatures/DellFeaturesBinPkgs/DellManageabilityPkg
+    url = ../../cbf/DellManageabilityPkg.git
+    branch = master
+[submodule "DellFeatures/DellFeaturesBinPkgs/DellPrivateSecurityPkg"]
+    path = DellFeatures/DellFeaturesBinPkgs/DellPrivateSecurityPkg
+    url = ../../cbf/DellPrivateSecurityPkg.git
+    branch = master
+[submodule "DellFeatures/DellFeaturesBinPkgs/DellSecurityPkg"]
+    path = DellFeatures/DellFeaturesBinPkgs/DellSecurityPkg
+    url = ../../cbf/DellSecurityPkg.git
+    branch = master
+[submodule "DellFeatures/DellFeaturesBinPkgs/DellUserInterfacePkg"]
+    path = DellFeatures/DellFeaturesBinPkgs/DellUserInterfacePkg
+    url = ../../cbf/DellUserInterfacePkg.git
+    branch = master
+[submodule "DellPkgs/DellPlatformPkgs/Binaries/Common/OpensslLib"]
+    path = DellPkgs/DellPlatformPkgs/Binaries/Common/OpensslLib
+    url = ../OpensslBinPkg.git
+    branch = main
+[submodule "Amd"]
+    path = Amd
+    url = ../Amd_2025.git
+    branch = main
+[submodule "Edk2"]
+    path = Edk2
+    url = ../Edk2_2025.git
+    branch = main
+[submodule "Edk2Platforms"]
+    path = Edk2Platforms
+    url = ../Edk2Platforms_2025.git
+    branch = main
+[submodule "Intel"]
+    path = Intel
+    url = ../Intel_2025.git
+    branch = main
