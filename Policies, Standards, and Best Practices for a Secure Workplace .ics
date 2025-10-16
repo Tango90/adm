@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+PRODID:-//LRN CONSOLE//EN
+BEGIN:VEVENT
+UID:1759854828458
+DTSTART;TZID=Asia/Calcutta:20251010T220348
+DTEND;TZID=Asia/Calcutta:20251010T230348
+SUMMARY:Policies, Standards, and Best Practices for a Secure Workplace 
+DESCRIPTION:At Dell Technologies, security and privacy are made up of multiple related areas, ranging from cybersecurity to the security of our team members in the workplace. This training provides a high-level overview of important security topics from these various areas, including key secure behaviors that we must all practice.\nLaunch: https://dell-console.lrn.com/learn/courselaunch?curriculumId=903665&systemId=7240800008&moduleId=162897\nVisit: https://dell-console.lrn.com/learn/queue
+X-ALT-DESC;FMTTYPE=text/html:<!DOCTYPE HTML PUBLIC -//W3C//DTD HTML 3.2//EN'><HTML><BODY><p>At Dell Technologies, security and privacy are made up of multiple related areas, ranging from cybersecurity to the security of our team members in the workplace. This training provides a high-level overview of important security topics from these various areas, including key secure behaviors that we must all practice.</p><br><br>Launch <a href='https://dell-console.lrn.com/learn/courselaunch?curriculumId=903665&systemId=7240800008&moduleId=162897' target='_blank'>Policies, Standards, and Best Practices for a Secure Workplace </a></BODY></HTML><br>Visit <a href='https://dell-console.lrn.com/learn/queue' target='_blank'>To Do List</a></BODY></HTML>
+LOCATION:dell-console.lrn.com
+END:VEVENT
+END:VCALENDAR
